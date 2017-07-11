@@ -49,7 +49,8 @@ class AdvertController extends Controller
             $em=$this->getDoctrine()->getManager();
             $em->persist($animal);
             $em->flush();
-            return new Response('Animal Ajouté');
+            $url = $this->get('router')->generate('crud_platform_view');
+            return new RedirectResponse($url);
         }
 
         return $this->render('CRUDPlatformBundle:Advert:add.html.twig',array(
@@ -65,7 +66,8 @@ class AdvertController extends Controller
             $em=$this->getDoctrine()->getManager();
 
             $em->flush();
-            return new Response('Animal Modifié');
+            $url = $this->get('router')->generate('crud_platform_view');
+            return new RedirectResponse($url);
         }
 
         return $this->render('CRUDPlatformBundle:Advert:add.html.twig',array(
@@ -78,7 +80,8 @@ class AdvertController extends Controller
 
         $em->remove($animal);
         $em->flush();
-        return new Response('Animal supprimé!');
+        $url = $this->get('router')->generate('crud_platform_view');
+        return new RedirectResponse($url);
     }
 
 }
