@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" />
+
+
+    <title>Bienvenue sur le tableau des amoureux de la nature !</title>
+</head>
+<body>
+<div class="container">
+<h1>Affichage du tableau</h1>
+
+<p>
+    {# On affiche tous les messages flash dont le nom est « info » #}
+    {% for message in app.session.flashbag.get('info') %}
+<p>Message flash : {{ message }}</p>
+{% endfor %}
+</p>
+
+
+    <h3>Ici nous pourrons voir la liste des animaux : </h3>
+    <a href="{{ path('crud_platform_add') }}">
+        <button>Ajouter un animal</button></a>
+
+<table class="table table-bordered">
+    <thead class="thead-inverse">
+    <tr>
+        <th>Nom animal</th>
+        <th>Description</th>
+        <th></th>
+    </tr>
+    </thead>
+    {% for item in tab %}
+    <tr>
+        <th>{{ item.animal }}</th>
+        <th>{{ item.description }}</th>
+        <th><a href="{{ path('crud_platform_edit',{'id':item.id}) }}">
+                <button>Modifier</button></a> <a href="{{ path('crud_platform_delete',{'id':item.id}) }}">
+                <button>X</button></a></th>
+    </tr>
+    {% endfor %}
+</table>
+<a href="{{ path('crud_platform_add') }}">
+    <button>Ajouter un animal</button></a>
+</div>
+</body>

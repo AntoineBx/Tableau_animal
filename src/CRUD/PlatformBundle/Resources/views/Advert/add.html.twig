@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" />
+
+    <title>Bienvenue sur le tableau des amoureux de la nature !</title>
+</head>
+<body>{{ dump() }}
+
+    <div class="container">
+        <h2>Affichage du formulaire</h2>
+        {{ form_start(form) }}
+        <div class="form-group">
+            {{ form_row(form.animal,{'attr':{'class':'form-control'}}) }}
+            {{ form_row(form.description,{'attr':{'class':'form-control'}}) }}
+            {{ form_row(form.type,{'attr':{'class':'form-control'}}) }}
+        </div>
+
+
+
+        <button type="submit">Valider</button>
+        {{ form_end(form) }}
+    </div>
+</body>
+</html>

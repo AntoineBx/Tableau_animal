@@ -1,0 +1,31 @@
+
+
+crud_platform_home:
+    path:     /
+    defaults: { _controller: CRUDPlatformBundle:Advert:index }
+
+crud_platform_view:
+    path:     /view/
+    defaults: { _controller: CRUDPlatformBundle:Advert:view }
+    requirements:
+          id: \d+
+crud_platform_add:
+    path:     /add/
+    defaults: { _controller: CRUDPlatformBundle:Advert:add }
+crud_platform_delete:
+    path:     /delete/{id}
+    defaults: { _controller: CRUDPlatformBundle:Advert:delete }
+crud_platform_edit:
+    path:     /edit/{id}
+    defaults: { _controller: CRUDPlatformBundle:Advert:edit }
+
+
+
+crud_platform_view_slug:
+    path:     /{year}/{slug}.{format}
+    defaults:
+          _controller: CRUDPlatformBundle:Advert:viewSlug
+          format:      html
+    requirements:
+          year: \d{4}
+          format: html|xml
